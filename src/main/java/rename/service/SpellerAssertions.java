@@ -1,13 +1,13 @@
 package rename.service;
 
-import rename.dto.SpellerIncome;
+import rename.dto.SpellerIncomeForText;
 
 public class SpellerAssertions {
 
 
-    private SpellerIncome[] spellerData;
+    private SpellerIncomeForText[] spellerData;
 
-    public SpellerAssertions(SpellerIncome[] response) {
+    public SpellerAssertions(SpellerIncomeForText[] response) {
         this.spellerData = response;
     }
 

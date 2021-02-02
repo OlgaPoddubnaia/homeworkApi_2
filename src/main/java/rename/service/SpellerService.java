@@ -1,8 +1,10 @@
 package rename.service;
 
-import com.google.gson.Gson;
+import io.restassured.response.Response;
 import rename.dto.SpellerDto;
+import rename.dto.SpellerIncomeForTexts;
 
+import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,21 +22,34 @@ public class SpellerService extends CommonService {
         return spellerService;
     }
 
-    public SpellerDto[] getDataByWord(String word) {
-        return
-                new CommonService()
-                        .getNoParams(String.format(checkTextPoint, word))
-                        .getBody().as(SpellerDto[].class);
+    public Response getDataByArray(SpellerIncomeForTexts spellerIncomeForTexts) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("text", spellerIncomeForTexts.getText());
+        params.put("lang", spellerIncomeForTexts.getLang());
+        params.put("options", spellerIncomeForTexts.getOptions());
+        return getWithParams(checkTextsPoint, params);
     }
 
-    public SpellerDto[] getDataByArray(String[] data) {
-        Map<String, Object> params = new HashMap<String, Object>();
-        params.put("codes", data);
+    public Response getDataByString(SpellerIncomeForTexts spellerIncomeForTexts) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("text", spellerIncomeForTexts.getText());
+        params.put("lang", spellerIncomeForTexts.getLang());
+        params.put("options", spellerIncomeForTexts.getOptions());
+        return getWithParams(checkTextPoint, params);
+    }
 
-        return
-                new Gson().fromJson(
-                        new CommonService()
-                                .getWithParams(checkTextsPoint, params)
-                                .getBody().asString(), SpellerDto[].class);
+    public SpellerService[] responseForText(Response response) {
+        return response
+                .then().extract().body().as((Type) SpellerDto[].class);
+    }
+
+    public SpellerService[] responseForTexts(Response response) {
+        return response
+                .then().extract().body().as((Type) SpellerDto[][].class);
     }
 }
+
+
+
+
+
