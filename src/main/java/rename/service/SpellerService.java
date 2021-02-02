@@ -9,6 +9,8 @@ import java.util.Map;
 public class SpellerService extends CommonService {
 
     private SpellerService spellerService;
+    String checkTextPoint = new URI().getCheckText();
+    String checkTextsPoint = new URI().getCheckTexts();
 
 
     public SpellerService getInstance() {
@@ -17,22 +19,22 @@ public class SpellerService extends CommonService {
 
         return spellerService;
     }
-//не уверена который спеллер нужен
+
     public SpellerDto[] getDataByWord(String word) {
         return
                 new CommonService()
-                        .getNoParams(String.format(URI.GET_BY_COUNTRY_NAME_URI, name))
-                        .getBody().as(CountryDto[].class);
+                        .getNoParams(String.format(checkTextPoint, word))
+                        .getBody().as(SpellerDto[].class);
     }
 
-    public CountryDto[] getCountryByCode(String code) {
+    public SpellerDto[] getDataByArray(String[] data) {
         Map<String, Object> params = new HashMap<String, Object>();
-        params.put("codes", code);
+        params.put("codes", data);
 
         return
                 new Gson().fromJson(
                         new CommonService()
-                                .getWithParams(URI.GET_BY_COUNTRY_CODE_URI, params)
-                                .getBody().asString(), CountryDto[].class);
+                                .getWithParams(checkTextsPoint, params)
+                                .getBody().asString(), SpellerDto[].class);
     }
 }
