@@ -10,7 +10,9 @@ public class SpellerAssertions {
 
     public SpellerAssertions containsRightWord
             (SpellerDto[] response, SpellerIncomeForText spellerIncomeForText) {
-        Assert.assertEquals(response[0].getWord(), spellerIncomeForText.getWord());
+        for (int i = 0; i < response.length; i++) {
+            Assert.assertEquals(response[i].getWord(), spellerIncomeForText.getWord());
+        }
         return this;
     }
 }
