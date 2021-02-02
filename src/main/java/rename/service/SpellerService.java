@@ -41,12 +41,12 @@ public class SpellerService extends CommonService {
 
     public SpellerDto[] responseForText(Response response) {
         return response
-                .then().extract().body().as((Type) SpellerDto[].class);
+                .then().extract().body().as(SpellerDto[].class);
     }
 
-    public SpellerDto[] responseForTexts(Response response) {
+    public SpellerDto[][] responseForTexts(Response response) {
         return response
-                .then().extract().body().as((Type) SpellerDto[][].class);
+                .then().extract().body().as(SpellerDto[][].class);
     }
 }
 

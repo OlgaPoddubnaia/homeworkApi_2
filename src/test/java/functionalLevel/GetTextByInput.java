@@ -31,8 +31,7 @@ public class GetTextByInput {
                 for (int j = 0; j < spellerIncomeForText.length; j++) {
                     dataObject[j][0] = spellerIncomeForText[j];
                 }
-            }
-            if (path.equals(jsonPathTexts)) {
+            } else if (path.equals(jsonPathTexts)) {
                 spellerIncomeForTexts = gson.fromJson(fileReader, SpellerIncomeForTexts[].class);
                 dataObject = new Object[spellerIncomeForTexts.length][1];
                 for (int j = 0; j < spellerIncomeForTexts.length; j++) {
@@ -47,7 +46,7 @@ public class GetTextByInput {
     }
 
     @DataProvider
-    public Object[][] dataFromJsonForText() {
+    public Object[] dataFromJsonForText() {
 
         dataObject = importDataIntoProvider(jsonPathText);
         return dataObject;

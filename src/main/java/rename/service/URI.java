@@ -2,6 +2,7 @@ package rename.service;
 
 import lombok.SneakyThrows;
 
+import java.io.FileInputStream;
 import java.util.Properties;
 
 public class URI {
@@ -12,8 +13,8 @@ public class URI {
     @SneakyThrows
     public URI() {
         Properties props = new Properties();
-        String propFileName = "test-api.properties.properties";
-        props.load(getClass().getClassLoader().getResourceAsStream(propFileName));
+        FileInputStream filePath= new FileInputStream("src/test/resources/test-api.properties");
+        props.load(filePath);
         baseUrl = props.getProperty("baseUrl");
         checkText = props.getProperty("checkText");
         checkTexts = props.getProperty("checkTexts");

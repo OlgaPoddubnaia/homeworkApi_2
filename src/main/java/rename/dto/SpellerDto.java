@@ -11,12 +11,19 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SpellerDto {
-    private Integer code;
+    private String code;
+    private String word;
+    private String[] s;
+    private String pos;
+    private String row;
+    private String col;
+    private String len;
+
+    /* private Integer code;
     private Integer pos;
     private Integer row;
     private Integer col;
     private Integer len;
     private String word;
-    private String[] s;
-
+    private String[] s;*/
 }

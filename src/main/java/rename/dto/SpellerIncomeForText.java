@@ -12,6 +12,6 @@ public class SpellerIncomeForText {
     private String lang;
     private String options;
     private String word;
-    private String s;
+    private String[] s;
     private String code;
 }
