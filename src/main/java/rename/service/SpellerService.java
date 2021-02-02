@@ -2,6 +2,7 @@ package rename.service;
 
 import io.restassured.response.Response;
 import rename.dto.SpellerDto;
+import rename.dto.SpellerIncomeForText;
 import rename.dto.SpellerIncomeForTexts;
 
 import java.lang.reflect.Type;
@@ -30,20 +31,20 @@ public class SpellerService extends CommonService {
         return getWithParams(checkTextsPoint, params);
     }
 
-    public Response getDataByString(SpellerIncomeForTexts spellerIncomeForTexts) {
+    public Response getDataByString(SpellerIncomeForText spellerIncomeForText) {
         Map<String, Object> params = new HashMap<>();
-        params.put("text", spellerIncomeForTexts.getText());
-        params.put("lang", spellerIncomeForTexts.getLang());
-        params.put("options", spellerIncomeForTexts.getOptions());
+        params.put("text", spellerIncomeForText.getText());
+        params.put("lang", spellerIncomeForText.getLang());
+        params.put("options", spellerIncomeForText.getOptions());
         return getWithParams(checkTextPoint, params);
     }
 
-    public SpellerService[] responseForText(Response response) {
+    public SpellerDto[] responseForText(Response response) {
         return response
                 .then().extract().body().as((Type) SpellerDto[].class);
     }
 
-    public SpellerService[] responseForTexts(Response response) {
+    public SpellerDto[] responseForTexts(Response response) {
         return response
                 .then().extract().body().as((Type) SpellerDto[][].class);
     }

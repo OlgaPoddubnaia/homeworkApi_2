@@ -8,10 +8,6 @@ public class SpellerAssertions {
 
     private SpellerIncomeForText[] spellerData;
 
-    public SpellerAssertions(SpellerIncomeForText[] response) {
-        this.spellerData = response;
-    }
-
     public SpellerAssertions containsRightWord
             (SpellerDto[] response, SpellerIncomeForText spellerIncomeForText) {
         Assert.assertEquals(response[0].getWord(), spellerIncomeForText.getWord());
