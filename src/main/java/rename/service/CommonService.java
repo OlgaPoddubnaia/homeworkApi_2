@@ -5,12 +5,9 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import lombok.SneakyThrows;
 import org.hamcrest.Matchers;
-import org.kohsuke.rngom.util.Uri;
 
 import java.util.Map;
-import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
 

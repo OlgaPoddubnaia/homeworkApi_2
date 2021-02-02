@@ -10,10 +10,10 @@ public class SpellerDto2 {
     private Integer col;
     private Integer len;
     private String word;
-    private List<String> s;
+    private String[] s;
 
     public SpellerDto2(Integer code, Integer pos, Integer row, Integer col,
-                       Integer len, String word, List<String> s) {
+                       Integer len, String word, String[] s) {
         this.code = code;
         this.pos = pos;
         this.row = row;
@@ -71,11 +71,11 @@ public class SpellerDto2 {
         this.word = word;
     }
 
-    public List<String> getS() {
+    public String[] getS() {
         return s;
     }
 
-    public void setS(List<String> s) {
+    public void setS(String[] s) {
         this.s = s;
     }
 
