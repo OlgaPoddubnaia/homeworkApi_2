@@ -5,11 +5,8 @@ import io.restassured.builder.RequestSpecBuilder;
 import io.restassured.filter.log.RequestLoggingFilter;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
-import org.hamcrest.Matchers;
 
 import java.util.Map;
-
-import static io.restassured.RestAssured.given;
 
 public class CommonService {
     private RequestSpecification REQUEST_SPECIFICATION;
@@ -32,6 +29,4 @@ public class CommonService {
 
         return specification.get(uri);
     }
-
-
 }
