@@ -5,6 +5,7 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import rename.dto.SpellerDto;
 import rename.dto.SpellerIncomeForText;
+import rename.dto.SpellerIncomeForTexts;
 import rename.service.SpellerAssertions;
 import rename.service.SpellerService;
 
@@ -27,4 +28,16 @@ public class SpellerTests {
        spellerAssertions
                 .containsRightWord(actualResult,spellerIncomeForText);
     }
+
+    @Test(dataProvider = "dataFromJsonForTexts", dataProviderClass = GetTextByInput.class)
+    public void checkTexts(SpellerIncomeForTexts spellerIncomeForTexts) {
+
+        Response response = spellerService.getDataByArray(spellerIncomeForTexts);
+        SpellerDto[][] actualResult =spellerService.responseForTexts(response);
+
+       spellerAssertions
+                .containsRightWords(actualResult,spellerIncomeForTexts);
+    }
+
+
 }
