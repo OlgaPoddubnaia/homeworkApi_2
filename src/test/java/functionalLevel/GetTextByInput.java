@@ -28,14 +28,14 @@ public class GetTextByInput {
             if (path.equals(jsonPathText)) {
                 spellerIncomeForText = gson.fromJson(fileReader, SpellerIncomeForText[].class);
                 dataObject = new Object[spellerIncomeForText.length][1];
-                for (int j = 0; j < spellerIncomeForText.length; j++) {
-                    dataObject[j][0] = spellerIncomeForText[j];
+                for (int i = 0; i < spellerIncomeForText.length; i++) {
+                    dataObject[i][0] = spellerIncomeForText[i];
                 }
             } else if (path.equals(jsonPathTexts)) {
                 spellerIncomeForTexts = gson.fromJson(fileReader, SpellerIncomeForTexts[][].class);
                 dataObject = new Object[spellerIncomeForTexts.length][1];
-                for (int j = 0; j < spellerIncomeForTexts.length; j++) {
-                    dataObject[j][0] = spellerIncomeForTexts[j];
+                for (int i = 0; i < spellerIncomeForTexts.length; i++) {
+                    dataObject[i][0] = spellerIncomeForTexts[i];
                 }
             }
 
