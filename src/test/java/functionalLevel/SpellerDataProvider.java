@@ -1,13 +1,11 @@
 package functionalLevel;
 
-import com.google.gson.Gson;
 import org.testng.annotations.DataProvider;
 
 public class SpellerDataProvider extends parsingGson {
 
     private String jsonPathText = "src/test/resources/forCheckTextData.json";
     private String jsonPathTexts = "src/test/resources/forCheckTextsData.json";
-    private Gson gson;
     private Object[][] dataObject;
 
     @DataProvider
