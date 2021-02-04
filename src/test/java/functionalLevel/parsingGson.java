@@ -9,11 +9,11 @@ import java.io.FileReader;
 
 public class parsingGson {
 
-    private String jsonPathText = "src/test/resources/forCheckTextData.json";
-    private String jsonPathTexts = "src/test/resources/forCheckTextsData.json";
+    protected String jsonPathText = "src/test/resources/forCheckTextData.json";
+    protected String jsonPathTexts = "src/test/resources/forCheckTextsData.json";
     private Gson gson;
     private FileReader fileReader;
-    private Object[][] dataObject;
+    protected Object[][] dataObject;
     private SpellerIncomeForText[] spellerIncomeForText;
     private SpellerIncomeForTexts[][] spellerIncomeForTexts;
 
