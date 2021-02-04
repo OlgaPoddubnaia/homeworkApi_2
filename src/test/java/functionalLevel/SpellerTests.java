@@ -5,7 +5,6 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import rename.dto.SpellerDto;
 import rename.dto.SpellerIncomeForText;
-import rename.dto.SpellerIncomeForTexts;
 import rename.service.SpellerAssertions;
 import rename.service.SpellerService;
 
@@ -20,24 +19,15 @@ public class SpellerTests {
         spellerService = new SpellerService();
     }
 
-
-    @Test(dataProvider = "dataFromJsonForText", dataProviderClass = GetTextByInput.class)
+    @Test(dataProvider = "dataFromJsonForText", dataProviderClass = SpellerDataProvider.class)
     public void checkText(SpellerIncomeForText spellerIncomeForText) {
         Response response = spellerService.getDataByString(spellerIncomeForText);
-        SpellerDto[] actualResult =spellerService.responseForText(response);
-       spellerAssertions
-                .containsRightWord(actualResult,spellerIncomeForText);
+        SpellerDto[] actualResult = spellerService.responseForText(response);
+        spellerAssertions
+                .resultContainsRightWord(actualResult, spellerIncomeForText)
+                .resultNotContainsWrongWord(actualResult, "Hello")
+                .resultContainsWordInSArray(actualResult, spellerIncomeForText)
+                .checkCodeInResult(actualResult, spellerIncomeForText)
+                .resultWithOneWrongWord(actualResult, spellerIncomeForText);
     }
-
-    @Test(dataProvider = "dataFromJsonForTexts", dataProviderClass = GetTextByInput.class)
-    public void checkTexts(SpellerIncomeForTexts spellerIncomeForTexts) {
-
-        Response response = spellerService.getDataByArray(spellerIncomeForTexts);
-        SpellerDto[][] actualResult =spellerService.responseForTexts(response);
-
-       spellerAssertions
-                .containsRightWords(actualResult,spellerIncomeForTexts);
-    }
-
-
 }

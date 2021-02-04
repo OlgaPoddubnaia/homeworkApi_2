@@ -13,7 +13,7 @@ public class URI {
     @SneakyThrows
     public URI() {
         Properties props = new Properties();
-        FileInputStream filePath= new FileInputStream("src/test/resources/test-api.properties");
+        FileInputStream filePath = new FileInputStream("src/test/resources/test-api.properties");
         props.load(filePath);
         baseUrl = props.getProperty("baseUrl");
         checkText = props.getProperty("checkText");
