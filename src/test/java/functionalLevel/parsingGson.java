@@ -27,6 +27,7 @@ public class parsingGson {
                 for (int i = 0; i < spellerIncomeForText.length; i++) {
                     dataObject[i][0] = spellerIncomeForText[i];
                 }
+
             } else if (path.equals(jsonPathTexts)) {
                 spellerIncomeForTexts = gson.fromJson(fileReader, SpellerIncomeForTexts[][].class);
                 dataObject = new Object[spellerIncomeForTexts.length][1];
