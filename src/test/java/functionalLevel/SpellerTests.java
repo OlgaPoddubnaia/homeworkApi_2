@@ -22,7 +22,7 @@ public class SpellerTests {
     }
 
     @Test(dataProvider = "dataFromJsonForText", dataProviderClass = SpellerDataProvider.class)
-    public void checkIfTextContains(SpellerIncomeForText spellerIncomeForText) {
+    public void checkIfTextContainsWord(SpellerIncomeForText spellerIncomeForText) {
         Response response = spellerService.getDataByString(spellerIncomeForText);
         SpellerDto[] actualResult = spellerService.responseForText(response);
         spellerAssertions
@@ -31,7 +31,7 @@ public class SpellerTests {
     }
 
     @Test(dataProvider = "dataFromJsonForText", dataProviderClass = SpellerDataProvider.class)
-    public void checkIfTextNotContains(SpellerIncomeForText spellerIncomeForText) {
+    public void checkIfTextNotContainsWord(SpellerIncomeForText spellerIncomeForText) {
         Response response = spellerService.getDataByString(spellerIncomeForText);
         SpellerDto[] actualResult = spellerService.responseForText(response);
         spellerAssertions
@@ -47,7 +47,7 @@ public class SpellerTests {
     }
 
     @Test(dataProvider = "dataFromJsonForTexts", dataProviderClass = SpellerDataProvider.class)
-    public void checkTextsContainRightWords(SpellerIncomeForTexts spellerIncomeForTexts) {
+    public void checkTextsContainRightWordsInArray(SpellerIncomeForTexts spellerIncomeForTexts) {
         Response response = spellerService.getDataByArray(spellerIncomeForTexts);
         SpellerDto[][] actualResult = spellerService.responseForTexts(response);
         spellerAssertions
@@ -56,7 +56,7 @@ public class SpellerTests {
     }
 
     @Test(dataProvider = "dataFromJsonForTexts", dataProviderClass = SpellerDataProvider.class)
-    public void checkNumberOfResults(SpellerIncomeForTexts spellerIncomeForTexts) {
+    public void checkNumberOfResultsInArray(SpellerIncomeForTexts spellerIncomeForTexts) {
         Response response = spellerService.getDataByArray(spellerIncomeForTexts);
         SpellerDto[][] actualResult = spellerService.responseForTexts(response);
         spellerAssertions.checkNumberOfResults(actualResult, spellerIncomeForTexts);

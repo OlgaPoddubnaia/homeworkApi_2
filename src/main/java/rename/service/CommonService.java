@@ -20,7 +20,6 @@ public class CommonService {
                 .build();
     }
 
-
     public Response getWithParams(String uri, Map<String, Object> params) {
         RequestSpecification specification = RestAssured.given(REQUEST_SPECIFICATION);
 

@@ -1,7 +1,6 @@
 package rename.dataProvider;
 
 import org.testng.annotations.DataProvider;
-import rename.dataProvider.ParsingGson;
 
 public class SpellerDataProvider extends ParsingGson {
 

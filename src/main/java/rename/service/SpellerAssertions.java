@@ -9,7 +9,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
 
 public class SpellerAssertions {
 
@@ -18,7 +17,6 @@ public class SpellerAssertions {
         for (SpellerDto s : response) {
             Assert.assertEquals(s.getWord(), spellerIncomeForText.getWord(),
                     "Result does not contains expected words");
-
         }
         return this;
     }
