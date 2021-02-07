@@ -1,13 +1,17 @@
 package rename.service;
 
+import lombok.Getter;
 import lombok.SneakyThrows;
 
 import java.io.FileInputStream;
 import java.util.Properties;
 
 public class URI {
+    @Getter
     private String checkText;
+    @Getter
     private String checkTexts;
+    @Getter
     private String baseUrl;
 
     @SneakyThrows
@@ -18,17 +22,5 @@ public class URI {
         baseUrl = props.getProperty("baseUrl");
         checkText = props.getProperty("checkText");
         checkTexts = props.getProperty("checkTexts");
-    }
-
-    public String getCheckText() {
-        return checkText;
-    }
-
-    public String getCheckTexts() {
-        return checkTexts;
-    }
-
-    public String getBaseUrl() {
-        return baseUrl;
     }
 }
