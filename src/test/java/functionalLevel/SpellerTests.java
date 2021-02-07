@@ -27,10 +27,16 @@ public class SpellerTests {
         SpellerDto[] actualResult = spellerService.responseForText(response);
         spellerAssertions
                 .resultContainsRightWord(actualResult, spellerIncomeForText)
-                .resultNotContainsWrongWord(actualResult, "Hello")
-                .resultContainsWordInSArray(actualResult, spellerIncomeForText)
-                .resultWithOneWrongWord(actualResult, spellerIncomeForText);
+                .resultContainsWordInSArray(actualResult, spellerIncomeForText);
+    }
 
+    @Test(dataProvider = "dataFromJsonForText", dataProviderClass = SpellerDataProvider.class)
+    public void checkIfTextNotContains(SpellerIncomeForText spellerIncomeForText) {
+        Response response = spellerService.getDataByString(spellerIncomeForText);
+        SpellerDto[] actualResult = spellerService.responseForText(response);
+        spellerAssertions
+                .resultNotContainsWrongWord(actualResult, "Hello")
+                .resultWithOneWrongWord(actualResult, spellerIncomeForText);
     }
 
     @Test(dataProvider = "dataFromJsonForText", dataProviderClass = SpellerDataProvider.class)
@@ -44,15 +50,15 @@ public class SpellerTests {
     public void checkTextsContainRightWords(SpellerIncomeForTexts spellerIncomeForTexts) {
         Response response = spellerService.getDataByArray(spellerIncomeForTexts);
         SpellerDto[][] actualResult = spellerService.responseForTexts(response);
-        spellerAssertions.containsRightWords(actualResult, spellerIncomeForTexts);
+        spellerAssertions
+                .containsRightWords(actualResult, spellerIncomeForTexts)
+                .doesNotContainsWrongWords(actualResult, spellerIncomeForTexts, "WrongString");
     }
 
     @Test(dataProvider = "dataFromJsonForTexts", dataProviderClass = SpellerDataProvider.class)
-    public void checkTextsDoesNotContainWrongWords(SpellerIncomeForTexts spellerIncomeForTexts) {
+    public void checkNumberOfResults(SpellerIncomeForTexts spellerIncomeForTexts) {
         Response response = spellerService.getDataByArray(spellerIncomeForTexts);
         SpellerDto[][] actualResult = spellerService.responseForTexts(response);
-        spellerAssertions.doesNotContainsWrongWords(actualResult, spellerIncomeForTexts, "WrongString");
+        spellerAssertions.checkNumberOfResults(actualResult, spellerIncomeForTexts);
     }
-
-
 }

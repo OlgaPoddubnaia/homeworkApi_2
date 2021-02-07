@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class SpellerAssertions {
 
@@ -64,7 +65,6 @@ public class SpellerAssertions {
         if (response[0].length > 0) {
             for (int i = 0; i < response[0].length; ++i) {
                 List<SpellerDto[]> listDtoArr = Arrays.asList(response);
-                List<String> list = Arrays.asList(((SpellerDto[]) listDtoArr.get(0))[i].getS());
                 String[] arrayS = ((SpellerDto[]) listDtoArr.get(0))[i].getS();
                 for (int j = 0; j < arrayS.length; ++j) {
                     String expected = arrayS[i];
@@ -76,19 +76,28 @@ public class SpellerAssertions {
         return this;
     }
 
-    public SpellerAssertions doesNotContainsWrongWords(SpellerDto[][] response, SpellerIncomeForTexts incomeForTexts,
-                                                String wrongS) {
+    public SpellerAssertions doesNotContainsWrongWords(SpellerDto[][] response,
+                                                       SpellerIncomeForTexts incomeForTexts, String wrongS) {
         if (response[0].length > 0) {
             for (int i = 0; i < response[0].length; ++i) {
                 List<SpellerDto[]> listDtoArr = Arrays.asList(response);
-                List<String> list = Arrays.asList(((SpellerDto[]) listDtoArr.get(0))[i].getS());
                 String[] arrayS = ((SpellerDto[]) listDtoArr.get(0))[i].getS();
                 for (int j = 0; j < arrayS.length; ++j) {
-                    String expected = arrayS[i];
                     Assert.assertNotEquals(incomeForTexts.getS()[i], wrongS,
                             "Result does contains wrong word");
 
                 }
+            }
+        }
+        return this;
+    }
+
+    public SpellerAssertions checkNumberOfResults(SpellerDto[][] response, SpellerIncomeForTexts incomeForTexts) {
+        if (response[0].length > 0) {
+            for (int i = 0; i < response[0].length; i++) {
+                List<SpellerDto[]> listDtoArr = Arrays.asList(response);
+                List<String> list = Arrays.asList(listDtoArr.get(0)[i].getS());
+                assertEquals(list.size(), incomeForTexts.getS().length, "Result has wrong number of results");
             }
         }
         return this;
