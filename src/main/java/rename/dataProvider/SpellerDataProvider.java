@@ -1,16 +1,17 @@
-package functionalLevel;
+package rename.dataProvider;
 
 import org.testng.annotations.DataProvider;
+import rename.dataProvider.ParsingGson;
 
-public class SpellerDataProvider extends parsingGson {
+public class SpellerDataProvider extends ParsingGson {
 
-    @DataProvider
-    public Object[] dataFromJsonForText() {
+    @DataProvider(name = "dataFromJsonForText")
+    public Object[][] dataFromJsonForText() {
         dataObject = importDataIntoProvider(jsonPathText);
         return dataObject;
     }
 
-    @DataProvider
+    @DataProvider(name = "dataFromJsonForTexts")
     public Object[][] dataFromJsonForTexts() {
         dataObject = importDataIntoProvider(jsonPathTexts);
         return dataObject;

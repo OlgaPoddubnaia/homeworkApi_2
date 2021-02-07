@@ -1,4 +1,4 @@
-package functionalLevel;
+package rename.dataProvider;
 
 import com.google.gson.Gson;
 import rename.dto.SpellerIncomeForText;
@@ -7,7 +7,7 @@ import rename.dto.SpellerIncomeForTexts;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 
-public class parsingGson {
+public class ParsingGson {
 
     protected String jsonPathText = "src/test/resources/forCheckTextData.json";
     protected String jsonPathTexts = "src/test/resources/forCheckTextsData.json";
@@ -15,7 +15,7 @@ public class parsingGson {
     private FileReader fileReader;
     protected Object[][] dataObject;
     private SpellerIncomeForText[] spellerIncomeForText;
-    private SpellerIncomeForTexts[][] spellerIncomeForTexts;
+    private SpellerIncomeForTexts[] spellerIncomeForTexts;
 
     public Object[][] importDataIntoProvider(String path) {
         gson = new Gson();
@@ -29,7 +29,7 @@ public class parsingGson {
                 }
 
             } else if (path.equals(jsonPathTexts)) {
-                spellerIncomeForTexts = gson.fromJson(fileReader, SpellerIncomeForTexts[][].class);
+                spellerIncomeForTexts = gson.fromJson(fileReader, SpellerIncomeForTexts[].class);
                 dataObject = new Object[spellerIncomeForTexts.length][1];
                 for (int i = 0; i < spellerIncomeForTexts.length; i++) {
                     dataObject[i][0] = spellerIncomeForTexts[i];

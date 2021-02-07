@@ -1,17 +1,27 @@
 [
-  [
-    {
-      "code": 1,
-      "pos": 0,
-      "row": 0,
-      "col": 0,
-      "len": 8,
-      "word": "feilings",
-      "s": [
-        "feelings",
-        "failings",
-        "filings"
-      ]
-    }
-  ]
+  {
+    "code": 1,
+    "pos": 0,
+    "row": 0,
+    "¬col": 0,
+    "len": 4,
+    "word": "helo",
+    "s": [
+      "hello",
+      "helo",
+      "help"
+    ]
+  },
+  {
+    "code": 1,
+    "pos": 5,
+    "row": 0,
+    "col": 5,
+    "len": 4,
+    "word": "wrld",
+    "s": [
+      "world",
+      "wrld"
+    ]
+  }
 ]

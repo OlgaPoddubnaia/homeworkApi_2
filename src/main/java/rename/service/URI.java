@@ -8,7 +8,7 @@ import java.util.Properties;
 public class URI {
     private String checkText;
     private String checkTexts;
-    String baseUrl;
+    private String baseUrl;
 
     @SneakyThrows
     public URI() {
